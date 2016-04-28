@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+ <meta charset="utf-8">
+ <title>html5 : how to crop a video tag into a canvas tag</title>
+ <script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function(event) { 
+    var canvas = document.getElementById('cropCvs'),
+        ctx = canvas.getContext('2d');
+
+    function loop(){
+      var video = document.getElementById('homepage-video');
+      ctx.drawImage(video, 0, 80, 1280, 720, 0, 0, 640, 360);
+      setTimeout(loop, 1000 / 30);
+    }
+    
+    loop();
+    }
+  );
+ </script>
+
+<style>
+#homepage-video {
+  /*display: none;*/ 
+}
+</style>
+
+</head>
+<body onload="javascript:onLoadEvent()">
+
+<!--
+<img src="http://cdn.shopify.com/s/files/1/1031/8337/t/35/assets/homepage-video.jpg?5487188956827529750">
+-->
+
+<!-- START HERO -->
+<div class="hero">
+  <div class="video-wrapper">
+    <video id="homepage-video" class="video-js vjs-default-skin" autoplay loop controls preload="auto" poster="http://cdn.shopify.com/s/files/1/1031/8337/t/35/assets/homepage-video-medium.jpg?5487188956827529750" data-setup='{ "responsive": true, "aspectRatio": "16:9" }' webkit-playsinline>
+      <source src="http://cdn.shopify.com/s/files/1/0419/6801/files/homepage-video.webm?9152597515833567460" type="video/webm">
+      <source src="http://cdn.shopify.com/s/files/1/0419/6801/files/homepage-video.mp4?4983501522507393660" type="video/mp4">
+      <img src="http://cdn.shopify.com/s/files/1/1031/8337/t/35/assets/homepage-video-medium.jpg?5487188956827529750">
+
+      <p class="vjs-no-js">
+        To view this video please enable JavaScript, and consider upgrading to a web browser that
+        <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+      </p>
+    </video>
+    <canvas
+     id="cropCvs"
+     height="280"
+     width="640"
+     style="width: 640px; height: 280px;">
+    </canvas>
+  </div>
+</div>
+</body>
+</html>
